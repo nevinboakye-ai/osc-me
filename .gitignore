@@ -1,0 +1,20 @@
+# Recordings and derived media never go in Git
+*.mp4
+*.mov
+*.webm
+*.m4a
+*.wav
+recordings/
+data/raw/
+# Secrets
+.env
+.env.*
+!.env.example
+# Node / Python
+node_modules/
+.next/
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.DS_Store

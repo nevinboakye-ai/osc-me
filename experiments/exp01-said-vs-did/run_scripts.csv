@@ -1,0 +1,289 @@
+run,examiner,partner,order,manoeuvre_id,manoeuvre,condition,instruction
+R01,E1,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C4,"SKIP it: do not do it, do not mention it"
+R01,E1,P1,2,M2,Tracheal position,C5,"Do it WRONGLY as described, narrating normally (Fingers on the side of the neck, not in the sternal notch)"
+R01,E1,P1,3,M3,"Chest expansion, front",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R01,E1,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R01,E1,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R01,E1,P1,6,M6,"Chest expansion, back",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R01,E1,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R01,E1,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R02,E1,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R02,E1,P1,2,M2,Tracheal position,C1,Do it correctly AND say it out loud
+R02,E1,P1,3,M3,"Chest expansion, front",C2,Do it correctly in SILENCE (say nothing about this step)
+R02,E1,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R02,E1,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R02,E1,P1,6,M6,"Chest expansion, back",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R02,E1,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R02,E1,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R03,E1,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C1,Do it correctly AND say it out loud
+R03,E1,P1,2,M2,Tracheal position,C2,Do it correctly in SILENCE (say nothing about this step)
+R03,E1,P1,3,M3,"Chest expansion, front",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R03,E1,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R03,E1,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Left side only)"
+R03,E1,P1,6,M6,"Chest expansion, back",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R03,E1,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R03,E1,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R04,E1,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R04,E1,P1,2,M2,Tracheal position,C4,"SKIP it: do not do it, do not mention it"
+R04,E1,P1,3,M3,"Chest expansion, front",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R04,E1,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R04,E1,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R04,E1,P1,6,M6,"Chest expansion, back",C2,Do it correctly in SILENCE (say nothing about this step)
+R04,E1,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R04,E1,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R05,E1,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C5,"Do it WRONGLY as described, narrating normally (Hands held palms down, wrists not cocked back, for 2 s)"
+R05,E1,P1,2,M2,Tracheal position,C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R05,E1,P1,3,M3,"Chest expansion, front",C1,Do it correctly AND say it out loud
+R05,E1,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R05,E1,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R05,E1,P1,6,M6,"Chest expansion, back",C4,"SKIP it: do not do it, do not mention it"
+R05,E1,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Upper zone only, both sides)"
+R05,E1,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R06,E1,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C2,Do it correctly in SILENCE (say nothing about this step)
+R06,E1,P1,2,M2,Tracheal position,C3,"SAY you are doing it, then move on WITHOUT doing it"
+R06,E1,P1,3,M3,"Chest expansion, front",C4,"SKIP it: do not do it, do not mention it"
+R06,E1,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R06,E1,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R06,E1,P1,6,M6,"Chest expansion, back",C1,Do it correctly AND say it out loud
+R06,E1,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R06,E1,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R07,E1,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C4,"SKIP it: do not do it, do not mention it"
+R07,E1,P2,2,M2,Tracheal position,C5,"Do it WRONGLY as described, narrating normally (Fingers on the side of the neck, not in the sternal notch)"
+R07,E1,P2,3,M3,"Chest expansion, front",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R07,E1,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R07,E1,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R07,E1,P2,6,M6,"Chest expansion, back",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R07,E1,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R07,E1,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R08,E1,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R08,E1,P2,2,M2,Tracheal position,C4,"SKIP it: do not do it, do not mention it"
+R08,E1,P2,3,M3,"Chest expansion, front",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R08,E1,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R08,E1,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R08,E1,P2,6,M6,"Chest expansion, back",C2,Do it correctly in SILENCE (say nothing about this step)
+R08,E1,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R08,E1,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R09,E1,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C1,Do it correctly AND say it out loud
+R09,E1,P2,2,M2,Tracheal position,C2,Do it correctly in SILENCE (say nothing about this step)
+R09,E1,P2,3,M3,"Chest expansion, front",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R09,E1,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R09,E1,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Left side only)"
+R09,E1,P2,6,M6,"Chest expansion, back",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R09,E1,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R09,E1,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R10,E1,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C2,Do it correctly in SILENCE (say nothing about this step)
+R10,E1,P2,2,M2,Tracheal position,C3,"SAY you are doing it, then move on WITHOUT doing it"
+R10,E1,P2,3,M3,"Chest expansion, front",C4,"SKIP it: do not do it, do not mention it"
+R10,E1,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R10,E1,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R10,E1,P2,6,M6,"Chest expansion, back",C1,Do it correctly AND say it out loud
+R10,E1,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R10,E1,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R11,E1,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R11,E1,P2,2,M2,Tracheal position,C1,Do it correctly AND say it out loud
+R11,E1,P2,3,M3,"Chest expansion, front",C2,Do it correctly in SILENCE (say nothing about this step)
+R11,E1,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R11,E1,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R11,E1,P2,6,M6,"Chest expansion, back",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R11,E1,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R11,E1,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R12,E1,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C5,"Do it WRONGLY as described, narrating normally (Hands held palms down, wrists not cocked back, for 2 s)"
+R12,E1,P2,2,M2,Tracheal position,C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R12,E1,P2,3,M3,"Chest expansion, front",C1,Do it correctly AND say it out loud
+R12,E1,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R12,E1,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R12,E1,P2,6,M6,"Chest expansion, back",C4,"SKIP it: do not do it, do not mention it"
+R12,E1,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Upper zone only, both sides)"
+R12,E1,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R13,E2,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C4,"SKIP it: do not do it, do not mention it"
+R13,E2,P1,2,M2,Tracheal position,C5,"Do it WRONGLY as described, narrating normally (Fingers on the side of the neck, not in the sternal notch)"
+R13,E2,P1,3,M3,"Chest expansion, front",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R13,E2,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R13,E2,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R13,E2,P1,6,M6,"Chest expansion, back",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R13,E2,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R13,E2,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R14,E2,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C1,Do it correctly AND say it out loud
+R14,E2,P1,2,M2,Tracheal position,C2,Do it correctly in SILENCE (say nothing about this step)
+R14,E2,P1,3,M3,"Chest expansion, front",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R14,E2,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R14,E2,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Left side only)"
+R14,E2,P1,6,M6,"Chest expansion, back",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R14,E2,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R14,E2,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R15,E2,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C2,Do it correctly in SILENCE (say nothing about this step)
+R15,E2,P1,2,M2,Tracheal position,C3,"SAY you are doing it, then move on WITHOUT doing it"
+R15,E2,P1,3,M3,"Chest expansion, front",C4,"SKIP it: do not do it, do not mention it"
+R15,E2,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R15,E2,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R15,E2,P1,6,M6,"Chest expansion, back",C1,Do it correctly AND say it out loud
+R15,E2,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R15,E2,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R16,E2,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C5,"Do it WRONGLY as described, narrating normally (Hands held palms down, wrists not cocked back, for 2 s)"
+R16,E2,P1,2,M2,Tracheal position,C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R16,E2,P1,3,M3,"Chest expansion, front",C1,Do it correctly AND say it out loud
+R16,E2,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R16,E2,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R16,E2,P1,6,M6,"Chest expansion, back",C4,"SKIP it: do not do it, do not mention it"
+R16,E2,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Upper zone only, both sides)"
+R16,E2,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R17,E2,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R17,E2,P1,2,M2,Tracheal position,C1,Do it correctly AND say it out loud
+R17,E2,P1,3,M3,"Chest expansion, front",C2,Do it correctly in SILENCE (say nothing about this step)
+R17,E2,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R17,E2,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R17,E2,P1,6,M6,"Chest expansion, back",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R17,E2,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R17,E2,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R18,E2,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R18,E2,P1,2,M2,Tracheal position,C4,"SKIP it: do not do it, do not mention it"
+R18,E2,P1,3,M3,"Chest expansion, front",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R18,E2,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R18,E2,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R18,E2,P1,6,M6,"Chest expansion, back",C2,Do it correctly in SILENCE (say nothing about this step)
+R18,E2,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R18,E2,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R19,E2,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R19,E2,P2,2,M2,Tracheal position,C4,"SKIP it: do not do it, do not mention it"
+R19,E2,P2,3,M3,"Chest expansion, front",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R19,E2,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R19,E2,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R19,E2,P2,6,M6,"Chest expansion, back",C2,Do it correctly in SILENCE (say nothing about this step)
+R19,E2,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R19,E2,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R20,E2,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R20,E2,P2,2,M2,Tracheal position,C1,Do it correctly AND say it out loud
+R20,E2,P2,3,M3,"Chest expansion, front",C2,Do it correctly in SILENCE (say nothing about this step)
+R20,E2,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R20,E2,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R20,E2,P2,6,M6,"Chest expansion, back",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R20,E2,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R20,E2,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R21,E2,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C2,Do it correctly in SILENCE (say nothing about this step)
+R21,E2,P2,2,M2,Tracheal position,C3,"SAY you are doing it, then move on WITHOUT doing it"
+R21,E2,P2,3,M3,"Chest expansion, front",C4,"SKIP it: do not do it, do not mention it"
+R21,E2,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R21,E2,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R21,E2,P2,6,M6,"Chest expansion, back",C1,Do it correctly AND say it out loud
+R21,E2,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R21,E2,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R22,E2,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C4,"SKIP it: do not do it, do not mention it"
+R22,E2,P2,2,M2,Tracheal position,C5,"Do it WRONGLY as described, narrating normally (Fingers on the side of the neck, not in the sternal notch)"
+R22,E2,P2,3,M3,"Chest expansion, front",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R22,E2,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R22,E2,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R22,E2,P2,6,M6,"Chest expansion, back",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R22,E2,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R22,E2,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R23,E2,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C5,"Do it WRONGLY as described, narrating normally (Hands held palms down, wrists not cocked back, for 2 s)"
+R23,E2,P2,2,M2,Tracheal position,C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R23,E2,P2,3,M3,"Chest expansion, front",C1,Do it correctly AND say it out loud
+R23,E2,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R23,E2,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R23,E2,P2,6,M6,"Chest expansion, back",C4,"SKIP it: do not do it, do not mention it"
+R23,E2,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Upper zone only, both sides)"
+R23,E2,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R24,E2,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C1,Do it correctly AND say it out loud
+R24,E2,P2,2,M2,Tracheal position,C2,Do it correctly in SILENCE (say nothing about this step)
+R24,E2,P2,3,M3,"Chest expansion, front",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R24,E2,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R24,E2,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Left side only)"
+R24,E2,P2,6,M6,"Chest expansion, back",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R24,E2,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R24,E2,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R25,E3,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R25,E3,P1,2,M2,Tracheal position,C4,"SKIP it: do not do it, do not mention it"
+R25,E3,P1,3,M3,"Chest expansion, front",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R25,E3,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R25,E3,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R25,E3,P1,6,M6,"Chest expansion, back",C2,Do it correctly in SILENCE (say nothing about this step)
+R25,E3,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R25,E3,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R26,E3,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R26,E3,P1,2,M2,Tracheal position,C1,Do it correctly AND say it out loud
+R26,E3,P1,3,M3,"Chest expansion, front",C2,Do it correctly in SILENCE (say nothing about this step)
+R26,E3,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R26,E3,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R26,E3,P1,6,M6,"Chest expansion, back",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R26,E3,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R26,E3,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R27,E3,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C5,"Do it WRONGLY as described, narrating normally (Hands held palms down, wrists not cocked back, for 2 s)"
+R27,E3,P1,2,M2,Tracheal position,C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R27,E3,P1,3,M3,"Chest expansion, front",C1,Do it correctly AND say it out loud
+R27,E3,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R27,E3,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R27,E3,P1,6,M6,"Chest expansion, back",C4,"SKIP it: do not do it, do not mention it"
+R27,E3,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Upper zone only, both sides)"
+R27,E3,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R28,E3,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C4,"SKIP it: do not do it, do not mention it"
+R28,E3,P1,2,M2,Tracheal position,C5,"Do it WRONGLY as described, narrating normally (Fingers on the side of the neck, not in the sternal notch)"
+R28,E3,P1,3,M3,"Chest expansion, front",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R28,E3,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R28,E3,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R28,E3,P1,6,M6,"Chest expansion, back",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R28,E3,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R28,E3,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R29,E3,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C1,Do it correctly AND say it out loud
+R29,E3,P1,2,M2,Tracheal position,C2,Do it correctly in SILENCE (say nothing about this step)
+R29,E3,P1,3,M3,"Chest expansion, front",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R29,E3,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R29,E3,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Left side only)"
+R29,E3,P1,6,M6,"Chest expansion, back",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R29,E3,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R29,E3,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R30,E3,P1,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C2,Do it correctly in SILENCE (say nothing about this step)
+R30,E3,P1,2,M2,Tracheal position,C3,"SAY you are doing it, then move on WITHOUT doing it"
+R30,E3,P1,3,M3,"Chest expansion, front",C4,"SKIP it: do not do it, do not mention it"
+R30,E3,P1,4,M4,"Percussion, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R30,E3,P1,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R30,E3,P1,6,M6,"Chest expansion, back",C1,Do it correctly AND say it out loud
+R30,E3,P1,7,M7,"Percussion, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R30,E3,P1,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R31,E3,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C4,"SKIP it: do not do it, do not mention it"
+R31,E3,P2,2,M2,Tracheal position,C5,"Do it WRONGLY as described, narrating normally (Fingers on the side of the neck, not in the sternal notch)"
+R31,E3,P2,3,M3,"Chest expansion, front",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R31,E3,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R31,E3,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R31,E3,P2,6,M6,"Chest expansion, back",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R31,E3,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R31,E3,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R32,E3,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C2,Do it correctly in SILENCE (say nothing about this step)
+R32,E3,P2,2,M2,Tracheal position,C3,"SAY you are doing it, then move on WITHOUT doing it"
+R32,E3,P2,3,M3,"Chest expansion, front",C4,"SKIP it: do not do it, do not mention it"
+R32,E3,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Right side only)"
+R32,E3,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R32,E3,P2,6,M6,"Chest expansion, back",C1,Do it correctly AND say it out loud
+R32,E3,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R32,E3,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R33,E3,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C5,"Do it WRONGLY as described, narrating normally (Hands held palms down, wrists not cocked back, for 2 s)"
+R33,E3,P2,2,M2,Tracheal position,C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R33,E3,P2,3,M3,"Chest expansion, front",C1,Do it correctly AND say it out loud
+R33,E3,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R33,E3,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R33,E3,P2,6,M6,"Chest expansion, back",C4,"SKIP it: do not do it, do not mention it"
+R33,E3,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Upper zone only, both sides)"
+R33,E3,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R34,E3,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R34,E3,P2,2,M2,Tracheal position,C1,Do it correctly AND say it out loud
+R34,E3,P2,3,M3,"Chest expansion, front",C2,Do it correctly in SILENCE (say nothing about this step)
+R34,E3,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R34,E3,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R34,E3,P2,6,M6,"Chest expansion, back",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R34,E3,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R34,E3,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R35,E3,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C1,Do it correctly AND say it out loud
+R35,E3,P2,2,M2,Tracheal position,C2,Do it correctly in SILENCE (say nothing about this step)
+R35,E3,P2,3,M3,"Chest expansion, front",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R35,E3,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"
+R35,E3,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C5,"Do it WRONGLY as described, narrating normally (Left side only)"
+R35,E3,P2,6,M6,"Chest expansion, back",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R35,E3,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R35,E3,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C2,Do it correctly in SILENCE (say nothing about this step)
+R36,E3,P2,1,M1,"Hands: asterixis (arms out, wrists cocked back, 15 s)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R36,E3,P2,2,M2,Tracheal position,C4,"SKIP it: do not do it, do not mention it"
+R36,E3,P2,3,M3,"Chest expansion, front",C5,"Do it WRONGLY as described, narrating normally (One hand only, on one side)"
+R36,E3,P2,4,M4,"Percussion, front (upper, middle, lower, both sides)",C6,"Do it correctly and narrate, but stand so your body blocks the side-on camera"
+R36,E3,P2,5,M5,"Auscultation, front (upper, middle, lower, both sides)",C1,Do it correctly AND say it out loud
+R36,E3,P2,6,M6,"Chest expansion, back",C2,Do it correctly in SILENCE (say nothing about this step)
+R36,E3,P2,7,M7,"Percussion, back (upper, middle, lower, both sides)",C3,"SAY you are doing it, then move on WITHOUT doing it"
+R36,E3,P2,8,M8,"Auscultation, back (upper, middle, lower, both sides)",C4,"SKIP it: do not do it, do not mention it"

@@ -1,0 +1,102 @@
+# DRAFT v0.1: respiratory examination rubric. Needs Nevin's clinical review before use.
+# This is not an official mark scheme. Criteria follow common UK teaching and will be checked against references.
+station: respiratory
+version: 0.1.0-draft
+status: draft_unreviewed
+duration_minutes: 8
+criteria:
+  - id: intro
+    domain: communication
+    text: Introduces self, confirms patient identity, explains the examination and gains consent
+    marks: 2
+    scoring: "0-1-2"
+    observability: audio
+    verbal_sufficient: true
+  - id: pain_check
+    domain: communication
+    text: Asks about pain before starting
+    marks: 1
+    scoring: binary
+    observability: audio
+    verbal_sufficient: true
+    critical: true
+  - id: positioning
+    domain: preparation
+    text: Positions patient at 45 degrees with adequate exposure (vest or top acceptable for practice)
+    marks: 1
+    scoring: binary
+    observability: video
+    verbal_sufficient: false
+  - id: hands_asterixis
+    domain: peripheral
+    text: Inspects hands and tests for asterixis (arms outstretched, wrists dorsiflexed)
+    marks: 1
+    scoring: binary
+    observability: video
+    verbal_sufficient: false
+    evidence: [asterixis_test]
+  - id: trachea
+    domain: neck
+    text: Assesses tracheal position at the sternal notch
+    marks: 1
+    scoring: binary
+    observability: video
+    verbal_sufficient: false
+    evidence: [trachea_palpation]
+  - id: expansion_front
+    domain: anterior_chest
+    text: Assesses chest expansion anteriorly
+    marks: 1
+    scoring: binary
+    observability: video
+    verbal_sufficient: false
+    evidence: [chest_expansion(anterior, bilateral_hands)]
+  - id: percussion_front
+    domain: anterior_chest
+    text: Percusses anterior chest, upper, middle and lower zones, comparing both sides
+    marks: 2
+    scoring: "0-1-2"   # 1 = incomplete sides or zones
+    observability: video
+    verbal_sufficient: false
+    evidence: [percussion(anterior, zones=[U,M,L], sides=[L,R])]
+  - id: auscultation_front
+    domain: anterior_chest
+    text: Auscultates anterior chest, upper, middle and lower zones, comparing both sides
+    marks: 2
+    scoring: "0-1-2"
+    observability: video   # placement only; what was heard is not assessable
+    verbal_sufficient: false
+    evidence: [auscultation(anterior, zones=[U,M,L], sides=[L,R])]
+  - id: expansion_back
+    domain: posterior_chest
+    text: Assesses chest expansion posteriorly
+    marks: 1
+    scoring: binary
+    observability: video
+    verbal_sufficient: false
+    evidence: [chest_expansion(posterior, bilateral_hands)]
+  - id: percussion_back
+    domain: posterior_chest
+    text: Percusses posterior chest, upper, middle and lower zones, comparing both sides
+    marks: 2
+    scoring: "0-1-2"
+    observability: video
+    verbal_sufficient: false
+    evidence: [percussion(posterior, zones=[U,M,L], sides=[L,R])]
+  - id: auscultation_back
+    domain: posterior_chest
+    text: Auscultates posterior chest, upper, middle and lower zones, comparing both sides
+    marks: 2
+    scoring: "0-1-2"
+    observability: video
+    verbal_sufficient: false
+    evidence: [auscultation(posterior, zones=[U,M,L], sides=[L,R])]
+  - id: closing
+    domain: communication
+    text: Thanks patient, offers to help them dress, summarises findings and suggests further investigations
+    marks: 2
+    scoring: "0-1-2"
+    observability: audio
+    verbal_sufficient: true
+  # Not yet included (to decide with Nevin): general inspection from end of bed, pulse and respiratory rate,
+  # face and neck inspection, cervical lymph nodes, apex/heaves, tactile fremitus or vocal resonance, peripheral oedema.
