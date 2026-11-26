@@ -61,7 +61,8 @@ def load_key() -> str:
         for line in env.read_text().splitlines():
             if "=" in line and not line.lstrip().startswith("#"):
                 name, value = line.split("=", 1)
-                os.environ.setdefault(name.strip(), value.strip().strip('"').strip("'"))
+                name = name.strip().lstrip("\\")  # tolerate a stray backslash left by rich-text editors
+                os.environ.setdefault(name, value.strip().strip('"').strip("'"))
     for name in ("GEMINI_API_KEY", "GEMINI_OSCME_API_KEY"):
         if os.environ.get(name):
             return os.environ[name]
