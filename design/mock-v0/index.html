@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OSC.ME mock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a shipped clinical-education app, calm and exact
+   IDEA an examiner's annotated marksheet tied to a video timeline
+   PICTURE the recording frame with the evidence timeline beneath it, each step a mark you can jump to
+   COLOUR white, ink, deep clinical blue; green seen, amber partly, red not seen, hatched grey could not see
+   TYPE Public Sans throughout, weight contrast
+   LAYOUT laptop: frame+timeline left, summary and step list right; phone: title, frame, summary, list */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0d1220);--ink:light-dark(#0f172a,#e6eaf2);--mute:light-dark(#56607a,#9aa4ba);--line:light-dark(#e3e7ef,#222b40);--panel:light-dark(#f5f7fb,#131a2c);--blue:light-dark(#1446a0,#7fa6ff);--band:light-dark(#1446a0,#10275c);--seen:light-dark(#0a7d55,#3fcf98);--part:light-dark(#b45309,#f5b453);--no:light-dark(#c2410c,#ff8a5c);--blk:light-dark(#7b8496,#8b95aa)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Public Sans",system-ui,sans-serif;overflow-x:clip}
+a{color:var(--blue)}
+button{font:inherit;cursor:pointer}
+.mock{background:var(--part);color:#fff;font-size:13px;font-weight:600;padding:6px 16px;text-align:center}
+:root .mock{color:light-dark(#fff,#1a1200)}
+header{background:var(--band);color:#fff;padding:12px max(5vw,16px);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.brand span{opacity:.7;font-weight:500;font-size:14px;margin-left:8px}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:10px 14px;border-radius:8px;font-weight:600;font-size:15px;opacity:.75;min-height:44px;display:inline-flex;align-items:center}
+nav a[aria-current=page]{background:rgba(255,255,255,.16);opacity:1}
+nav a:focus-visible,button:focus-visible{outline:3px solid var(--part);outline-offset:2px}
+main{max-width:1240px;margin:0 auto;padding:clamp(20px,3vw,40px) max(5vw,16px) 48px}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.08;letter-spacing:-.02em;margin:0 0 6px;text-wrap:balance}
+h2{font-size:22px;letter-spacing:-.01em;margin:0 0 12px}
+.sub{color:var(--mute);margin:0 0 24px}
+.view{display:none}.view.on{display:block}
+.grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;align-items:start}
+.frame{position:relative;border-radius:12px;overflow:hidden;background:#0b1220;aspect-ratio:16/10}
+.frame svg{position:absolute;inset:0;width:100%;height:100%}
+.cap{position:absolute;left:12px;bottom:12px;right:12px;background:rgba(8,12,24,.82);color:#fff;border-radius:8px;padding:8px 12px;font-size:14px;line-height:1.4}
+.cap b{font-variant-numeric:tabular-nums}
+.tl{margin-top:14px}
+.track{position:relative;height:44px;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.seg{position:absolute;top:6px;bottom:6px;border-radius:4px;border:0;padding:0}
+.seg.seen{background:var(--seen)}.seg.part{background:var(--part)}.seg.no{background:transparent;border:2px dashed var(--no)}
+.seg.blk{background:repeating-linear-gradient(45deg,var(--blk) 0 4px,transparent 4px 8px);border:1px solid var(--blk)}
+.said{position:absolute;top:-6px;width:2px;height:56px;background:var(--blue)}
+.head{position:absolute;top:-4px;bottom:-4px;width:3px;background:var(--ink);border-radius:2px;transition:left .35s ease}
+.ticks{display:flex;justify-content:space-between;color:var(--mute);font-size:13px;margin-top:4px;font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--mute);margin-top:10px}
+.legend i{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.fig2{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.fig2 b{display:block;font-size:30px;line-height:1.1;letter-spacing:-.02em}
+.fig2 span{font-size:14px;color:var(--mute)}
+.steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.steps li{border-bottom:1px solid var(--line)}
+.steps button{width:100%;background:none;border:0;color:inherit;text-align:left;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 12px;padding:10px 6px;min-height:44px;align-items:center;border-radius:6px}
+.steps button:hover,.steps button[aria-pressed=true]{background:var(--panel)}
+.dot{width:12px;height:12px;border-radius:50%}
+.dot.seen{background:var(--seen)}.dot.part{background:var(--part)}.dot.no{border:2px solid var(--no)}.dot.blk{background:var(--blk)}
+.nm{font-weight:600}
+.st{font-size:14px;white-space:nowrap;font-weight:600}
+.st.seen{color:var(--seen)}.st.part{color:var(--part)}.st.no{color:var(--no)}.st.blk{color:var(--mute)}
+.why{grid-column:2/4;font-size:14px;color:var(--mute)}
+.sec{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+.card{border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.fb{margin:0;padding-left:20px}.fb li{margin-bottom:10px}
+.oid{font-size:13px;font-weight:700;color:var(--blue);background:color-mix(in srgb,var(--blue) 12%,transparent);border-radius:4px;padding:1px 6px;white-space:nowrap}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;color:var(--mute);font-weight:600}
+td.t{white-space:nowrap;font-variant-numeric:tabular-nums}
+.how{margin-top:40px;background:var(--panel);border-radius:12px;padding:18px 20px;font-size:15px}
+.how ol{margin:8px 0 0;padding-left:20px}
+.setup{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+.pick{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.pick button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:10px 16px;min-height:44px;font-weight:600}
+.pick button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.pick button:disabled{opacity:.5;cursor:not-allowed}
+.check{list-style:none;padding:0;margin:0 0 20px}.check li{padding:8px 0 8px 30px;position:relative;border-bottom:1px solid var(--line)}
+.check li::before{content:"";position:absolute;left:4px;top:13px;width:14px;height:14px;border-radius:4px;border:2px solid var(--seen)}
+.drop{display:block;border:2px dashed var(--line);border-radius:12px;padding:28px;text-align:center;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 20px;border-radius:8px;border:0;background:var(--blue);color:#fff;font-weight:700;text-decoration:none}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--ink)}
+.stages{list-style:none;padding:0;margin:0 0 24px;max-width:640px}
+.stages li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.stages .ic{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);margin-top:2px}
+.stages li.done .ic{background:var(--seen);border-color:var(--seen)}
+.stages li.now .ic{border-color:var(--blue);border-top-color:transparent;animation:spin 1s linear infinite}
+.stages small{grid-column:2;color:var(--mute);font-size:14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.stages li.now .ic{animation:none}.head{transition:none}}
+@media(min-width:861px){.grid>div:first-child{position:sticky;top:16px}}
+@media(max-width:860px){.grid,.sec,.setup{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.why{grid-column:1/4}table{font-size:13px}th,td{padding:6px 4px}}
+</style></head><body>
+<div class="mock">Design mock with made-up sample data. Nothing on this page analyses a video.</div>
+<header><div class="brand">OSC.ME<span>Respiratory station</span></div>
+<nav aria-label="Screens"><a href="#record" id="n-record">1 Record</a><a href="#processing" id="n-processing">2 Processing</a><a href="#report" id="n-report">3 Report</a></nav></header>
+<main>
+
+<section class="view" id="v-record">
+<h1>Record your respiratory examination</h1>
+<p class="sub">One phone, one take, about 10 minutes. You get feedback on what your hands did, with timestamps.</p>
+<div class="setup"><div>
+<h2>Station</h2>
+<div class="pick"><button aria-pressed="true" id="st-resp">Respiratory</button><button disabled title="Second station, not built">Cardiovascular (later)</button></div>
+<h2>Before you press record</h2>
+<ul class="check">
+<li>Prop the phone on the side opposite your dominant hand, at chest height, landscape.</li>
+<li>Patient and both your hands in frame for the front and the back of the chest.</li>
+<li>Partner in a vest or sports top. No faces needed above the chin.</li>
+<li>Say each step if you like. Speech helps us find the moment, but only what we see earns the mark.</li>
+</ul>
+<label class="drop" for="file">Choose a recording<br><small>In this mock nothing is uploaded or analysed.</small><input id="file" type="file" accept="video/*" style="display:block;margin:12px auto 0;max-width:100%"></label>
+<p><a class="btn" href="#processing">Continue to sample processing</a></p>
+</div>
+<div class="card"><h2>Camera position</h2>
+<svg viewBox="0 0 320 240" width="100%" role="img" aria-label="Top-down view: couch in the middle, examiner on the patient's right, phone on the opposite side angled at the chest">
+<rect x="70" y="60" width="180" height="90" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>
+<ellipse cx="120" cy="105" rx="34" ry="26" fill="color-mix(in srgb,var(--blue) 25%,transparent)"/><circle cx="82" cy="105" r="14" fill="color-mix(in srgb,var(--blue) 40%,transparent)"/>
+<circle cx="150" cy="178" r="16" fill="var(--seen)"/><text x="150" y="214" text-anchor="middle" font-size="13" fill="var(--ink)">You</text>
+<rect x="138" y="8" width="26" height="16" rx="3" fill="var(--ink)"/><path d="M151 24 L105 92 M151 24 L175 92" stroke="var(--part)" stroke-width="2" stroke-dasharray="4 4"/>
+<text x="176" y="20" font-size="13" fill="var(--ink)">Phone</text><text x="160" y="136" text-anchor="middle" font-size="13" fill="var(--mute)">Patient on couch</text>
+</svg></div></div>
+</section>
+
+<section class="view" id="v-processing">
+<h1>Checking your recording</h1>
+<p class="sub">Simulated. This shows the stages the real pipeline will run.</p>
+<ol class="stages" id="stages"></ol>
+<a class="btn" href="#report">See sample report</a>
+</section>
+
+<section class="view" id="v-report">
+<h1>5 of 8 physical steps seen in full</h1>
+<p class="sub">Sample attempt · Respiratory station · 8 min 30 s · every mark below links to the moment in your video</p>
+<div class="grid"><div>
+<div class="frame"><svg id="scene" viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg><div class="cap" id="cap"></div></div>
+<div class="tl"><div class="track" id="track"></div><div class="ticks"><span>00:00</span><span>02:00</span><span>04:00</span><span>06:00</span><span>08:30</span></div>
+<div class="legend"><span><i style="background:var(--seen)"></i>Seen</span><span><i style="background:var(--part)"></i>Partly seen</span><span><i style="border:2px dashed var(--no)"></i>Said, not seen</span><span><i style="background:repeating-linear-gradient(45deg,var(--blk) 0 3px,transparent 3px 6px)"></i>Couldn't see</span><span><i style="background:var(--blue);width:3px"></i>Announced</span></div></div>
+</div><div>
+<div class="figs" id="figs"></div>
+<ul class="steps" id="steps"></ul>
+</div></div>
+
+<div class="sec"><div class="card"><h2>What to work on</h2><ol class="fb" id="fb"></ol></div>
+<div class="card"><h2>Communication (marked from speech)</h2><table><thead><tr><th>Criterion</th><th>Result</th><th>When</th></tr></thead><tbody id="comm"></tbody></table></div></div>
+
+<div class="how"><b>How this was marked.</b>
+<ol><li>The AI writes observations only: what it saw, where, and when. Each has an ID like <span class="oid">O-08</span>.</li>
+<li>Fixed rules turn observations into marks. A physical step needs hands in contact for at least 3 seconds on screen. Saying it never earns the mark.</li>
+<li>If the camera couldn't see a step, it isn't marked either way, and we tell you how to fix the angle.</li></ol></div>
+</section>
+</main>
+<script>
+{
+const T=510;
+const steps=[
+{nm:"Asterixis",s:"seen",a:38,b:41,e:57,o:"O-03",w:"Arms outstretched, wrists cocked back, held 16 s.",p:[300,170]},
+{nm:"Trachea",s:"seen",a:108,b:112,e:118,o:"O-06",w:"Two fingers in the suprasternal notch.",p:[330,140]},
+{nm:"Chest expansion, front",s:"seen",a:136,b:140,e:147,o:"O-08",w:"Hands on lower ribs, thumbs meeting, patient breathes in.",p:[330,215]},
+{nm:"Percussion, front",s:"part",a:160,b:163,e:205,o:"O-10, O-11",w:"Both sides, upper and middle zones. Lower zones not percussed.",p:[330,195]},
+{nm:"Auscultation, front",s:"seen",a:216,b:220,e:271,o:"O-13",w:"Both sides, upper, middle and lower zones.",p:[330,200]},
+{nm:"Chest expansion, back",s:"no",a:312,b:312,e:318,o:"O-15",w:"Announced at 05:12. No hand contact on the back was seen.",p:[260,210]},
+{nm:"Percussion, back",s:"blk",a:318,b:320,e:341,o:"O-16",w:"Your hands left the frame. Tapping is audible but not visible, so not marked.",p:[255,195]},
+{nm:"Auscultation, back",s:"seen",a:345,b:348,e:400,o:"O-18",w:"Both sides, upper, middle and lower zones.",p:[260,200]}];
+const label={seen:"Seen",part:"Partly seen",no:"Not seen",blk:"Couldn't see"};
+const mm=x=>String(Math.floor(x/60)).padStart(2,"0")+":"+String(x%60).padStart(2,"0");
+const count=k=>steps.filter(s=>s.s===k).length;
+document.getElementById("figs").innerHTML=[["seen","Seen in full"],["part","Partly seen"],["no","Said but not seen"],["blk","Camera couldn't see"]].map(([k,t])=>`<div class="fig2"><b style="color:var(--${k==='blk'?'mute':k})">${count(k)}</b><span>${t}</span></div>`).join("");
+const track=document.getElementById("track");
+track.innerHTML=steps.map((s,i)=>`<button class="seg ${s.s}" data-i="${i}" style="left:${s.b/T*100}%;width:${Math.max(.8,(s.e-s.b)/T*100)}%" aria-label="${s.nm}, ${label[s.s]}, ${mm(s.b)}"></button>`).join("")+steps.map(s=>`<span class="said" style="left:${s.a/T*100}%"></span>`).join("")+`<span class="head" id="head"></span>`;
+const list=document.getElementById("steps");
+list.innerHTML=steps.map((s,i)=>`<li><button data-i="${i}" aria-pressed="false"><span class="dot ${s.s}"></span><span class="nm">${s.nm}</span><span class="st ${s.s}">${label[s.s]}</span><span class="why">${mm(s.b)} · ${s.w} <span class="oid">${s.o}</span></span></button></li>`).join("");
+const scene=document.getElementById("scene");
+const draw=(i)=>{const s=steps[i];const back=i>=5;
+scene.innerHTML=`<defs><linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2a4a"/><stop offset="1" stop-color="#0f1a33"/></linearGradient></defs>
+<rect width="640" height="400" fill="url(#wall)"/><rect y="300" width="640" height="100" fill="#0b1426"/>
+<rect x="150" y="250" width="340" height="40" rx="10" fill="#2c3e66"/><rect x="150" y="286" width="340" height="10" fill="#1d2b4a"/>
+<path d="M${back?250:280} 250 C ${back?240:270} 180, ${back?260:290} 150, ${back?285:315} 140 L ${back?330:360} 140 C ${back?350:380} 160, ${back?355:385} 210, ${back?350:380} 250 Z" fill="#8fb3e6"/>
+<circle cx="${back?300:335}" cy="112" r="24" fill="#d8b49a"/><rect x="${back?292:327}" y="128" width="16" height="14" fill="#d8b49a"/>
+<path d="M455 300 L 470 180 C 472 160, 500 150, 512 165 L 520 300 Z" fill="#3a8d78"/><circle cx="492" cy="140" r="22" fill="#c99b7d"/>
+<path d="M470 190 C 430 200, ${s.p[0]+40} ${s.p[1]}, ${s.p[0]+12} ${s.p[1]}" stroke="#c99b7d" stroke-width="12" fill="none" stroke-linecap="round"/>
+${s.s==="blk"?`<rect x="190" y="150" width="200" height="110" fill="#0b1220" opacity=".92"/><text x="290" y="210" text-anchor="middle" fill="#cbd3e4" font-size="16" font-family="Public Sans,sans-serif">Hands out of shot</text>`:s.s==="no"?``:`<circle cx="${s.p[0]}" cy="${s.p[1]}" r="20" fill="none" stroke="${s.s==='part'?'#f5b453':'#3fcf98'}" stroke-width="4"/>`}
+<rect x="16" y="16" width="64" height="26" rx="5" fill="rgba(0,0,0,.5)"/><text x="48" y="34" text-anchor="middle" fill="#fff" font-size="14" font-family="Public Sans,sans-serif">${mm(s.b)}</text>`;
+document.getElementById("cap").innerHTML=`<b>${mm(s.b)}–${mm(s.e)}</b> · ${s.nm}: ${label[s.s]}. ${s.w}`;
+document.getElementById("head").style.left=`calc(${s.b/T*100}% - 1px)`;
+list.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.i===i)));};
+const pick=e=>{const b=e.target.closest("[data-i]");if(b)draw(+b.dataset.i);};
+list.addEventListener("click",pick);track.addEventListener("click",pick);
+draw(3);
+document.getElementById("fb").innerHTML=[
+["Percuss the lower zones on both sides at the front. You stopped after the middle zones.","O-11"],
+["You said you would check expansion on the back, but your hands didn't touch the back. Saying it doesn't earn the mark.","O-15"],
+["At 05:20 your hands left the frame during percussion at the back. Move the phone round to your left so it can see the back.","O-16"],
+["Good asterixis: held for 16 seconds with wrists fully cocked back.","O-03"]].map(([t,o])=>`<li>${t} <span class="oid">${o}</span></li>`).join("");
+document.getElementById("comm").innerHTML=[["Introduces self and role","Heard","00:04"],["Gains consent","Heard","00:09"],["Explains the examination","Heard","00:15"],["Asks about pain before touching","Not heard","–"],["Thanks the patient","Heard","07:58"]].map(r=>`<tr><td>${r[0]}</td><td style="color:var(--${r[1]==='Heard'?'seen':'no'});font-weight:600">${r[1]}</td><td class="t">${r[2]}</td></tr>`).join("");
+const stages=[["Upload","Encrypted, private storage, deleted after 30 days."],["Find the moments","Speech and movement point to where each step probably happens."],["Look closely at each step","The AI checks each moment for hand contact, side and zone, and writes observations."],["Score","Fixed rules turn observations into marks. No AI scoring."],["Write feedback","Every comment cites the observation it comes from."]];
+const st=document.getElementById("stages");let timer=null;
+const run=()=>{clearInterval(timer);let k=0;const paint=()=>{st.innerHTML=stages.map(([t,d],i)=>`<li class="${i<k?'done':i===k?'now':''}"><span class="ic"></span><b>${t}</b><small>${d}</small></li>`).join("");};paint();timer=setInterval(()=>{k++;paint();if(k>=stages.length)clearInterval(timer);},900);};
+const route=()=>{const h=(location.hash||"#report").slice(1);const v=["record","processing","report"].includes(h)?h:"report";
+for(const n of ["record","processing","report"]){document.getElementById("v-"+n).classList.toggle("on",n===v);const a=document.getElementById("n-"+n);if(n===v)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");}
+if(v==="processing")run();window.scrollTo(0,0);};
+addEventListener("hashchange",route);route();
+}
+</script>
+</body></html>
