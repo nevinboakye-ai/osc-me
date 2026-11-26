@@ -107,7 +107,7 @@ def load_labels(path: Path) -> List[Label]:
                 start=mmss(_col(row, "start")),
                 end=mmss(_col(row, "end")),
                 sides=_col(row, "sides").lower(),
-                zones=[z for z in _col(row, "zones").lower().replace(",", "|").split("|") if z],
+                zones=[z.strip() for z in _col(row, "zones").lower().replace(",", "|").split("|") if z.strip()],
                 visibility=_col(row, "visibility").lower(),
             ))
     return labels

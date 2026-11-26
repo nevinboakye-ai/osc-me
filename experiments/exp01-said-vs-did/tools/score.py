@@ -6,6 +6,7 @@ Prints a markdown report:
 - Detection (present windows): was the target manoeuvre reported as seen?
 - False credit (said_not_done windows): was the announced-but-not-yet-done manoeuvre reported as seen?
 - False alarms: in any window, a manoeuvre reported as seen that the labels say is absent from that stretch.
+- Abstained (present windows the labeller marked blocked): the model should NOT report it as seen.
 - Side and zone agreement, and start-time error within ±3 s (full windows), where labels exist.
 - Consistency: same detection answer across repeats.
 Window errors (invalid or failed responses) count as failures, never as passes.
@@ -61,9 +62,13 @@ def score(records: List[dict], labels: List[Label]) -> Dict[str, Dict[str, Tuple
 
         if kind == "present" and target:
             hit = None if failed else _seen(obs, target)
+            lab = index.get((video, target))
+            if lab and lab.visibility == "blocked":
+                # Seen, not said: if the labeller could not see it, the model must not credit it.
+                add("abstained (blocked)", target, not failed and hit is None)
+                continue
             add("detected (present)", target, hit is not None)
             consistency[(video, kind, ws, target)].add(hit is not None)
-            lab = index.get((video, target))
             if hit and lab:
                 if lab.sides:
                     add("side correct", target, hit.get("sides") == lab.sides)
@@ -77,7 +82,7 @@ def score(records: List[dict], labels: List[Label]) -> Dict[str, Dict[str, Tuple
         if kind == "full":
             for man in MANOEUVRES:
                 lab = index.get((video, man))
-                if not lab or not lab.present or lab.start is None:
+                if not lab or not lab.present or lab.start is None or lab.visibility == "blocked":
                     continue
                 hit = None if failed else _seen(obs, man)
                 pred = mmss(hit.get("start", "")) if hit else None
@@ -106,7 +111,7 @@ def report(metrics: Dict[str, Dict[str, Tuple[int, int]]], records: List[dict]) 
     cols = MANOEUVRES + ["ALL"]
     lines = ["| Metric | " + " | ".join(c.replace("_", " ") for c in cols) + " |",
              "| --- |" + " --- |" * len(cols)]
-    order = ["detected (present)", "false credit (said, not done)", "false alarm (absent)",
+    order = ["detected (present)", "false credit (said, not done)", "abstained (blocked)", "false alarm (absent)",
              "side correct", "zones correct", "start within ±3 s (full)", "consistent across repeats"]
     for metric in order:
         if metric in metrics:

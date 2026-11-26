@@ -82,3 +82,15 @@ def test_errors_never_count_as_passes(tmp_path):
     m = score(records, labels)
     assert m["detected (present)"]["percussion_front"] == (0, 1)
     assert m["false credit (said, not done)"]["percussion_front"] == (1, 1)
+
+
+def test_blocked_rewards_abstaining_and_zones_parse(tmp_path):
+    labels = write_labels(tmp_path, [
+        [V, "percussion_back", "yes", "", "01:00", "01:20", "both", "upper, middle, lower", "blocked"],
+    ])
+    assert labels[0].zones == ["upper", "middle", "lower"]
+    abstain = score([rec("present", "percussion_back", 55, 85, [])], labels)
+    assert abstain["abstained (blocked)"]["ALL"] == (1, 1)
+    assert "detected (present)" not in abstain
+    credited = score([rec("present", "percussion_back", 55, 85, [obs("percussion_back")])], labels)
+    assert credited["abstained (blocked)"]["ALL"] == (0, 1)
