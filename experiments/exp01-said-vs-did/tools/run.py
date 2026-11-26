@@ -22,7 +22,9 @@ sys.path.insert(0, str(HERE))
 from observe import PROMPTS, PROMPT_VERSION, ask_gemini, estimate_cost, load_key, load_labels  # noqa: E402
 from windows import build_windows  # noqa: E402
 
-TOKENS_PER_SECOND_LOW = 95  # measured: 27,421 input tokens for a 300 s window
+TOKENS_PER_SECOND_LOW = 110  # measured: ~109/s over 106 windows (26 Nov 2026)
+OUTPUT_TOKENS = {"gemini-3.8-flash": 1100}  # thinking tokens; measured mean 1,088 per window
+DEFAULT_OUTPUT_TOKENS = 400
 
 
 def main() -> None:
@@ -43,7 +45,7 @@ def main() -> None:
         ids = set(args.only.split(","))
         windows = [w for w in windows if w.video.rsplit("=", 1)[-1] in ids]
     seconds = sum(w.end - w.start for w in windows) * args.repeats
-    est = estimate_cost(args.model, int(seconds * TOKENS_PER_SECOND_LOW), 400 * len(windows) * args.repeats)
+    est = estimate_cost(args.model, int(seconds * TOKENS_PER_SECOND_LOW), OUTPUT_TOKENS.get(args.model, DEFAULT_OUTPUT_TOKENS) * len(windows) * args.repeats)
     print(f"{len(windows)} windows x {args.repeats} repeats, {seconds / 60:.1f} min of video, "
           f"estimated ${est or 0:.3f} if billed (YouTube input is free during preview)")
     for kind in sorted(kinds):
