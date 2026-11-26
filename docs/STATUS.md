@@ -27,6 +27,8 @@ Last updated 2026-11-26.
 | Cost for 93 windows | $0.10 | $0.56 | — |
 
   Neither model passes the false-credit threshold yet. All 7 of 3.8-flash's false credits are 2–4 s before the labelled start; flash-lite's include 10–17 s early. obs-v1 vs obs-v2 prompt made no difference for flash-lite (44% vs 46%). Total spend on Experiment 1 so far about $1.27.
+- Re-analysis (no new calls): requiring the model's own contact duration ≥3 s gives 3.8-flash 59/59 detected and 0/32 false credit (flash-lite 58/59, 5/32). N=3 was chosen on this same data, so it must be confirmed on new videos. N≥4 loses real 3–4 s trachea/expansion checks. The 7 remaining 3.8-flash false credits were 0–2 s contacts at the window edge, not narration.
+- Unsolved: both models credited the 2 steps the labeller marked blocked (heard, not seen), with full sides and zones. A duration rule cannot catch this; muted-video testing (Tier B) is the planned check.
 
 ## Known limitations (by design)
 - Auscultation: placement only, not technique or findings.
