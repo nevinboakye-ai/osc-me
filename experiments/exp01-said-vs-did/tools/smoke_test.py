@@ -19,11 +19,12 @@ from pydantic import BaseModel, Field
 
 DEFAULT_URL = "https://www.youtube.com/watch?v=Y48np9EyzBI"
 
-# USD per million tokens (Gemini Developer API, paid tier, checked 2026-11-26). Update if pricing changes.
+# USD per million tokens (Gemini API, paid tier, standard rates, checked 2026-11-26). Update if pricing changes.
+# Gemini 2.5 models are no longer available to new API users.
 PRICES = {
-    "gemini-2.5-flash": (0.30, 2.50),
-    "gemini-2.5-flash-lite": (0.10, 0.40),
+    "gemini-3.5-flash-lite": (0.30, 2.50),
     "gemini-3.1-flash-lite": (0.25, 1.50),
+    "gemini-3.8-flash": (0.75, 3.75),  # rises to 1.50 / 7.50 from 2027-01-01
 }
 
 Manoeuvre = Literal[
@@ -70,7 +71,7 @@ def load_key() -> str:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("url", nargs="?", default=DEFAULT_URL)
-    parser.add_argument("--model", default="gemini-2.5-flash")
+    parser.add_argument("--model", default="gemini-3.5-flash-lite")
     parser.add_argument("--start", type=int, default=0)
     parser.add_argument("--end", type=int, default=300, help="seconds; keeps the first test small")
     args = parser.parse_args()
