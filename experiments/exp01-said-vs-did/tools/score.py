@@ -28,11 +28,20 @@ from observe import MANOEUVRES, Label, load_labels, mmss  # noqa: E402
 TIME_TOLERANCE = 3.0
 
 
+MIN_CONTACT = 0.0  # seconds; set by --min-contact. The candidate engine rule is 3 s (see STATUS).
+
+
 def _seen(observations: Optional[list], manoeuvre: str) -> Optional[dict]:
+    """Longest seen observation of this manoeuvre lasting at least MIN_CONTACT seconds."""
+    best, best_dur = None, -1.0
     for o in observations or []:
-        if o.get("manoeuvre") == manoeuvre and o.get("seen"):
-            return o
-    return None
+        if o.get("manoeuvre") != manoeuvre or not o.get("seen"):
+            continue
+        s, e = mmss(o.get("start", "")), mmss(o.get("end", ""))
+        dur = (e - s) if s is not None and e is not None else 0.0
+        if dur >= MIN_CONTACT and dur > best_dur:
+            best, best_dur = o, dur
+    return best
 
 
 def _overlaps(label: Label, start: float, end: float) -> bool:
@@ -130,8 +139,13 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("results")
     parser.add_argument("--labels", default=str(HERE.parent / "public_labels.csv"))
+    parser.add_argument("--min-contact", type=float, default=0.0,
+                        help="credit a manoeuvre only if the model's own start-end lasts at least this many seconds")
     args = parser.parse_args()
     records = [json.loads(line) for line in open(args.results) if line.strip()]
+    global MIN_CONTACT
+    MIN_CONTACT = args.min_contact
+    print(f"Minimum contact: {MIN_CONTACT:g} s")
     print(report(score(records, load_labels(Path(args.labels))), records))
 
 

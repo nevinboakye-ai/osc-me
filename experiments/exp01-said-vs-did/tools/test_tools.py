@@ -94,3 +94,16 @@ def test_blocked_rewards_abstaining_and_zones_parse(tmp_path):
     assert "detected (present)" not in abstain
     credited = score([rec("present", "percussion_back", 55, 85, [obs("percussion_back")])], labels)
     assert credited["abstained (blocked)"]["ALL"] == (0, 1)
+
+
+def test_min_contact_rule(tmp_path):
+    import score as sc
+    labels = write_labels(tmp_path, [[V, "tracheal_position", "yes", "00:50", "01:00", "01:06"]])
+    brief = {**obs("tracheal_position", start="00:57"), "end": "00:58"}
+    records = [rec("said_not_done", "tracheal_position", 42, 59, [brief])]
+    assert score(records, labels)["false credit (said, not done)"]["ALL"] == (1, 1)
+    sc.MIN_CONTACT = 3.0
+    try:
+        assert score(records, labels)["false credit (said, not done)"]["ALL"] == (0, 1)
+    finally:
+        sc.MIN_CONTACT = 0.0

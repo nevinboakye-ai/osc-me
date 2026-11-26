@@ -2,7 +2,7 @@
 
 Run from the repository root:
     python experiments/exp01-said-vs-did/tools/run.py --dry-run
-    python experiments/exp01-said-vs-did/tools/run.py --model gemini-3.5-flash-lite --repeats 1 --max-cost 1.00
+    python experiments/exp01-said-vs-did/tools/run.py --model gemini-3.8-flash --prompt obs-v2 --repeats 1 --max-cost 1.00
 
 Results go to experiments/exp01-said-vs-did/results/<run_id>.jsonl, one line per window and repeat.
 The run stops before it would pass --max-cost (estimated from the tokens actually used so far).
@@ -30,7 +30,7 @@ DEFAULT_OUTPUT_TOKENS = 400
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--labels", default=str(HERE.parent / "public_labels.csv"))
-    parser.add_argument("--model", default="gemini-3.5-flash-lite")
+    parser.add_argument("--model", default="gemini-3.8-flash")  # D-007
     parser.add_argument("--repeats", type=int, default=1)
     parser.add_argument("--kinds", default="full,present,said_not_done")
     parser.add_argument("--max-cost", type=float, default=1.00, help="USD ceiling for this run")

@@ -13,7 +13,7 @@ from typing import Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field
 
-PROMPT_VERSION = "obs-v1"  # default; see PROMPTS
+PROMPT_VERSION = "obs-v2"  # default; see PROMPTS
 
 MANOEUVRES = [
     "asterixis", "tracheal_position", "chest_expansion_front", "percussion_front",
