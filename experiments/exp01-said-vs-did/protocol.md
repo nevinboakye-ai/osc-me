@@ -1,56 +1,33 @@
 # Experiment 1: "Said versus did" (respiratory)
 
-Status: draft for Nevin's review, 26 November 2026.
+Status: v2 draft, 26 November 2026. v1 relied on 36 filmed runs. v2 replaces most of that filming with public demonstration videos (decision D-006). One short filming session remains for the cases that public videos cannot provide.
 
 ## Question
 
-From a single phone, can any pipeline confirm that a respiratory-examination manoeuvre was physically performed, on the correct side and zones, without relying on what the student says?
+Can a pipeline confirm that a respiratory-examination manoeuvre was physically performed, on the correct side and zones, without relying on what was said?
 
-## People
+## Three tiers
 
-- 3 student examiners (E1 to E3) and 2 practice partners (P1, P2). Everyone signs `consent.md` before recording.
-- Partners wear a vest or sports top. Stethoscope over thin clothing is fine. Nothing intimate is filmed.
-- One person (usually Nevin) runs the session: reads the next run's script aloud, starts and stops both phones.
-
-## Equipment
-
-- 2 phones on tripods or clamps, landscape, 1080p 30 fps, using the phones' own camera apps.
-- Couch with the backrest at 45 degrees, or an upright chair if no couch.
-- Stethoscope. Ordinary room lighting; avoid a bright window behind the patient.
-- A printout of `run_scripts.csv`, one sheet per run.
-
-## Camera positions (both phones record every run)
-
-| Camera | Position | Height | Distance |
+| Tier | Source | Conditions it tests | Nevin's time |
 | --- | --- | --- | --- |
-| `side` | Patient's left, perpendicular to the patient | Patient's chest height | 2 to 2.5 m, both people fully in frame |
-| `diagonal` | 45 degrees from the patient's front-left | Patient's chest height | 2 to 2.5 m, both people fully in frame |
+| A | 20 to 40 public YouTube demonstrations, read by Gemini directly from the URL (no download) | Correct performance (C1), timing, side and zone, sequence; "said, not yet done" and "absent" windows (below) | About 2 to 3 hours labelling, or correcting draft labels |
+| B | Local copies of videos whose licence allows it, or whose creator has given permission | Muted video (C2); narration spliced over a clip with the manoeuvre removed (C3); manoeuvre removed entirely (C4) | None |
+| C | One filming session, about 1 hour, two phones | Wrong technique (C5), blocked view (C6), real phone conditions | About 1 hour plus volunteers |
 
-The examiner works from the patient's right as usual, and moves behind the patient for the back of the chest.
+Tier A runs first. Tier C happens before any student uses OSC.ME, not before building starts.
 
-## Each run (about 4 minutes)
+## Tier A details
 
-1. Start both phones. Everyone claps once (this syncs the two videos).
-2. Calibration: the examiner raises their right hand, then the partner raises their right hand.
-3. Examiner gives a normal introduction and consent request.
-4. Examiner performs the 8 manoeuvres in order (M1 to M8), each following its condition in the script.
-5. Examiner says "Examination finished". Stop both phones.
-6. Rename both files: `R07_side.mp4`, `R07_diagonal.mp4`.
+**Inclusion:** real footage (not animation); continuous enough to follow each manoeuvre; both anterior and posterior chest shown; public on YouTube. Record the number of camera cuts per minute as a covariate.
 
-The script fixes which of six conditions applies to each manoeuvre:
+**Exclusion:** slideshows, narrated diagrams, and compilations without a full examination.
 
-| Code | Condition |
-| --- | --- |
-| C1 | Do it correctly and say it out loud |
-| C2 | Do it correctly in silence |
-| C3 | Say you are doing it, then move on without doing it |
-| C4 | Skip it: do not do it, do not mention it |
-| C5 | Do it wrongly (the script says how), narrating normally |
-| C6 | Do it correctly and narrate, but block the side-on camera with your body |
+**Windows instead of edits.** Gemini accepts start and end offsets on YouTube URLs, so negative cases can be made without editing:
+- *Said, not yet done (C3-like):* a window that ends after the examiner announces a manoeuvre but before their hands start it.
+- *Absent (C4-like):* a window from another part of the examination, asked about a manoeuvre that does not occur in it.
+- *Present (C1):* a window that contains the whole manoeuvre.
 
-Across each examiner–partner pair's 6 runs, every manoeuvre gets every condition exactly once (a balanced Latin square). In total: 36 runs, 288 manoeuvre instances, each filmed from two angles.
-
-Suggested sessions: two sessions of about 2.5 hours (18 runs each, with breaks).
+Limits: we cannot mute a YouTube URL, so vision-only performance is measured in Tier B. Demo videos flatter accuracy (good light, multiple angles, edited). Results are an upper bound, not the product's real accuracy.
 
 ## Manoeuvres
 
@@ -59,43 +36,38 @@ Suggested sessions: two sessions of about 2.5 hours (18 runs each, with breaks).
 | M1 | Asterixis | Patient's arms outstretched, wrists cocked back, held for about 15 s |
 | M2 | Tracheal position | Examiner's finger(s) in the sternal notch |
 | M3 | Chest expansion, front | Both hands on the lower anterior chest, thumbs meeting, patient breathes in |
-| M4 | Percussion, front | Upper, middle and lower zones, both sides, compared side to side |
-| M5 | Auscultation, front | Upper, middle and lower zones, both sides, compared side to side |
+| M4 | Percussion, front | Upper, middle and lower zones, both sides, compared |
+| M5 | Auscultation, front | Upper, middle and lower zones, both sides, compared |
 | M6 | Chest expansion, back | Both hands on the lower posterior chest |
 | M7 | Percussion, back | Upper, middle and lower zones, both sides |
 | M8 | Auscultation, back | Upper, middle and lower zones, both sides |
 
-Nevin to check these definitions clinically before the first session.
+Nevin to check these definitions clinically.
 
-## Labelling (after recording)
+## Labels
 
-Fill `labels_template.csv`: one row per run, camera and manoeuvre (576 rows). Record what actually happened, not what the script intended: a slip is fine, just label it. Times are mm:ss from the start of that camera's file. `visibility` is judged per camera.
+For each video and manoeuvre: present or absent, start and end (mm:ss), sides, zones, whether it was narrated, and visibility. Claude can produce draft labels for Nevin to correct. Correcting is faster, but it risks anchoring the labeller on the model's view, so 5 videos are labelled blind first and compared.
 
-## Pipelines compared
+## Pipelines
 
-1. Gemini on the whole run with audio.
-2. Gemini on the whole run, muted.
-3. MediaPipe pose and hands with hand-written rules.
-4. Hybrid (main design): speech cues and pose flag candidate moments; Gemini Flash-Lite looks closely at each short muted clip; rules decide. Marks require visual confirmation.
+1. Gemini on the window, with audio (Tier A and B).
+2. Gemini on the window, muted (Tier B only).
+3. MediaPipe pose and hands with rules (Tier B and C: needs local video).
+4. Hybrid: speech cues and pose propose windows; Gemini Flash-Lite judges muted clips; rules decide (Tier B and C).
 
-Cost controls: runs locally on Nevin's Mac; Gemini paid tier via Batch API (half price), Flash-Lite models by default, a Pro-class model only on a sample of about 40 clips. Expected AI spend $5 to $15.
+## Thresholds
 
-## Pass thresholds (agreed before seeing results)
+Unchanged from v1 (see docs/VALIDATION.md). Tier A results alone cannot pass Gate 1, because C2 and C5 are not tested there.
 
-| Measure | Pass | Fail |
-| --- | --- | --- |
-| Silent manoeuvres detected (C2) | ≥ 85% | < 70% |
-| False credit for said-only (C3) | ≤ 10% | > 25% |
-| Correct side, and zones for M4/M5/M7/M8 | ≥ 90% | < 80% |
-| Timestamp within ±3 s | ≥ 90% | < 75% |
-| Says "insufficient evidence" when blocked (C6) | ≥ 70% | < 40% |
-| Same answer on 3 repeat runs | ≥ 90% | < 80% |
+## Copyright and data handling
 
-Pass = one pipeline and camera position meets every threshold on at least 6 of the 8 manoeuvres.
+- Public videos are used only for internal evaluation. They are never shown in OSC.ME, redistributed, or used to train models.
+- Tier A sends only the YouTube URL to Gemini; no copy is made.
+- Tier B uses only Creative Commons videos that allow it, or videos whose creator has given written permission.
+- Before any public accuracy claim, ask the creators whose videos were used for permission.
+- Tier C follows the consent form in `consent.md`.
 
-## Data handling
+## Files
 
-- Videos stay on Nevin's Mac and the team's agreed storage. They never go into Git.
-- Videos are sent only to the paid Gemini API, which does not use them to improve Google's products.
-- These recordings are for internal development. Nothing is published without ethics approval.
-- All raw videos are deleted within 12 months, or sooner on any participant's request.
+- `candidates.csv`: candidate videos with licence status (to be checked by opening each video's description).
+- `run_scripts.csv`, `labels_template.csv`: v1 materials, kept for Tier C. Tier C will use a cut-down script of about 10 runs.

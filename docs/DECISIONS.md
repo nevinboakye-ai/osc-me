@@ -19,3 +19,7 @@ Experiment 1 runs locally on Nevin's Mac. Gemini calls use the paid tier, throug
 
 ## D-005 Stack (2026-11-26, proposed by Claude, accepted with the plan)
 Next.js on Vercel; Supabase in the London region; Python worker; Gemini behind a provider interface. Before any external user, AI calls move to Vertex AI `europe-west2`. See ARCHITECTURE.md.
+
+## D-006 Public demonstration videos replace most filming (2026-11-26, Nevin)
+Experiment 1 starts with 20 to 40 public respiratory demonstration videos. Gemini reads them from their YouTube URLs, with no download. Negative cases come from clipping windows, and from edited local copies only where the licence or the creator's permission allows. One short filming session of about 1 hour remains, for wrong technique, blocked views and real phone conditions, and it happens before any student uses OSC.ME.
+**Why:** Nevin wants minimal filming involvement, and gold-standard demonstrations are widely available. **Accepted limits:** demonstrations show only correct technique and flatter accuracy, so they give an upper bound. Their copyright status restricts them to internal evaluation.

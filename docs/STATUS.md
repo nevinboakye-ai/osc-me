@@ -4,13 +4,13 @@ Last updated 2026-11-26.
 
 ## Implemented
 - Nothing user-facing yet.
-- Experiment 1 pack: protocol, 36 balanced run scripts (`tools/gen_runs.py` regenerates them), consent form, labelling template.
+- Experiment 1 pack (v2 protocol using public demo videos; v1 run scripts kept for the short filming session): protocol, 36 balanced run scripts (`tools/gen_runs.py` regenerates them), consent form, labelling template.
 
 ## In progress
 - M0 Foundation: repository, docs, Experiment 1 pack. Waiting on Nevin's clinical review of the manoeuvre definitions and the draft respiratory rubric.
 
 ## Next
-- M1: record the 36 runs (two sessions), label them, build the evaluation harness, run the four pipelines, decide Gate 1.
+- M1 (v2, D-006): confirm candidate videos and licences, label 20 to 40 public demos, build the evaluation harness (Gemini on YouTube URLs with clip windows), then Tier B on licensed copies. One 1-hour filming session (Tier C) before Gate 1.
 
 ## Experimental
 - None yet.
