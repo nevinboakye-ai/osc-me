@@ -19,7 +19,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
-from observe import PROMPT_VERSION, ask_gemini, estimate_cost, load_key, load_labels  # noqa: E402
+from observe import PROMPTS, PROMPT_VERSION, ask_gemini, estimate_cost, load_key, load_labels  # noqa: E402
 from windows import build_windows  # noqa: E402
 
 TOKENS_PER_SECOND_LOW = 95  # measured: 27,421 input tokens for a 300 s window
@@ -32,11 +32,16 @@ def main() -> None:
     parser.add_argument("--repeats", type=int, default=1)
     parser.add_argument("--kinds", default="full,present,said_not_done")
     parser.add_argument("--max-cost", type=float, default=1.00, help="USD ceiling for this run")
+    parser.add_argument("--prompt", default=PROMPT_VERSION, choices=sorted(PROMPTS))
+    parser.add_argument("--only", help="comma-separated video ids to include (e.g. to rerun a subset)")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
     kinds = set(args.kinds.split(","))
     windows = [w for w in build_windows(load_labels(Path(args.labels))) if w.kind in kinds]
+    if args.only:
+        ids = set(args.only.split(","))
+        windows = [w for w in windows if w.video.rsplit("=", 1)[-1] in ids]
     seconds = sum(w.end - w.start for w in windows) * args.repeats
     est = estimate_cost(args.model, int(seconds * TOKENS_PER_SECOND_LOW), 400 * len(windows) * args.repeats)
     print(f"{len(windows)} windows x {args.repeats} repeats, {seconds / 60:.1f} min of video, "
@@ -49,7 +54,7 @@ def main() -> None:
     from google import genai
 
     client = genai.Client(api_key=load_key())
-    run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + f"_{args.model}"
+    run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + f"_{args.model}_{args.prompt}"
     out_dir = HERE.parent / "results"
     out_dir.mkdir(exist_ok=True)
     out_path = out_dir / f"{run_id}.jsonl"
@@ -60,11 +65,11 @@ def main() -> None:
                 if spent >= args.max_cost:
                     print(f"Stopped: reached --max-cost ${args.max_cost:.2f}")
                     break
-                record = {"run_id": run_id, "model": args.model, "prompt_version": PROMPT_VERSION,
+                record = {"run_id": run_id, "model": args.model, "prompt_version": args.prompt,
                           "video": w.video, "kind": w.kind, "target": w.target,
                           "win_start": w.start, "win_end": w.end, "repeat": repeat}
                 try:
-                    answer, inp, outp = ask_gemini(client, args.model, w.video, w.start, w.end)
+                    answer, inp, outp = ask_gemini(client, args.model, w.video, w.start, w.end, args.prompt)
                     cost = estimate_cost(args.model, inp, outp) or 0.0
                     spent += cost
                     record.update(observations=[o.model_dump() for o in answer.observations],

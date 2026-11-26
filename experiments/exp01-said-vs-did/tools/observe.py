@@ -13,7 +13,7 @@ from typing import Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field
 
-PROMPT_VERSION = "obs-v1"
+PROMPT_VERSION = "obs-v1"  # default; see PROMPTS
 
 MANOEUVRES = [
     "asterixis", "tracheal_position", "chest_expansion_front", "percussion_front",
@@ -57,6 +57,32 @@ Rules:
 - Sides are the patient's left and right; use not_applicable for midline steps such as the trachea.
 - Zones: upper, middle, lower chest. Do not guess zones you cannot see.
 - Times are MM:SS from the start of the full video, not the clip."""
+
+
+PROMPT_V2 = """You are an OSCE examiner watching a clip from a respiratory examination.
+Your only job is to report physical manoeuvres you can SEE the examiner's hands performing.
+Ignore everything that is said. An announcement such as "I'm now going to percuss the chest",
+an explanation, or a description of what would be done is NEVER evidence that it was done.
+
+A manoeuvre counts as seen only from the first frame where this is visible:
+- asterixis: the patient's arms are outstretched with wrists cocked back.
+- tracheal_position: the examiner's finger(s) in contact with the suprasternal notch.
+- chest_expansion_front / chest_expansion_back: the examiner's hands flat on the patient's lower ribs
+  (front or back), and the patient breathes in.
+- percussion_front / percussion_back: a finger striking a finger placed on the chest (front or back).
+- auscultation_front / auscultation_back: the stethoscope head in contact with the chest (front or back).
+Hands moving towards the patient, positioning the patient, or gesturing do not count.
+If the hands are hidden, off camera or out of shot, set seen=false even if sounds suggest it happened.
+start is the first frame of contact as defined above, not when it was announced.
+
+Sides are the patient's left and right; use not_applicable for asterixis and the trachea.
+Zones (percussion and auscultation only): upper = apices and above the nipple line or upper third of
+the back; middle = around the nipple line or mid back; lower = below the nipple line or lung bases.
+List only zones you saw contact in; do not guess.
+Use "other" for anything else worth noting. If you see none of the manoeuvres, return an empty list.
+Times are MM:SS from the start of the full video, not the clip."""
+
+PROMPTS = {"obs-v1": PROMPT, "obs-v2": PROMPT_V2}
 
 
 def mmss(value: str) -> Optional[float]:
@@ -134,7 +160,7 @@ def estimate_cost(model: str, input_tokens: int, output_tokens: int) -> Optional
     return input_tokens * pin / 1e6 + output_tokens * pout / 1e6
 
 
-def ask_gemini(client, model: str, url: str, start: float, end: float):
+def ask_gemini(client, model: str, url: str, start: float, end: float, prompt_version: str = PROMPT_VERSION):
     """One structured question about one clip. Returns (Answer, input_tokens, output_tokens)."""
     from google.genai import types
 
@@ -145,7 +171,7 @@ def ask_gemini(client, model: str, url: str, start: float, end: float):
                 file_data=types.FileData(file_uri=url),
                 video_metadata=types.VideoMetadata(start_offset=f"{int(start)}s", end_offset=f"{int(end)}s"),
             ),
-            types.Part(text=PROMPT),
+            types.Part(text=PROMPTS[prompt_version]),
         ]),
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
